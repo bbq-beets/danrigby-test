@@ -1,0 +1,13 @@
+name: Second
+
+on:
+   workflow_run:
+     workflows: [First]
+     types:
+       - completed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello world from second"
