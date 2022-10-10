@@ -1,0 +1,21 @@
+name: GlobalId Format Check
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - '.github/workflows-lab/globalid-check.yml'
+    - 'lab/**'
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  secrets-provided:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify Repository Node ID Matches Expected Format
+        run: |
+          set -x # show what ran
+          set -e # stop on first error
+          echo ${{ github.event.repository.node_id }}
