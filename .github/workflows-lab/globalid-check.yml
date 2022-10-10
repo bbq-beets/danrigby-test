@@ -19,3 +19,7 @@ jobs:
           set -x # show what ran
           set -e # stop on first error
           echo ${{ github.event.repository.node_id }}
+          if ! [[ "${{ github.event.repository.node_id }}" = "R_kgDOIGkiGA" ]]; then
+            echo "ERROR: Repository Node ID Not In Expected Format"
+            exit 1
+          fi
